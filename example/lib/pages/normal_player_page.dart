@@ -1,5 +1,4 @@
 import 'package:better_player/better_player.dart';
-import 'package:better_player_example/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -14,21 +13,17 @@ class _NormalPlayerPageState extends State<NormalPlayerPage> {
 
   @override
   void initState() {
-    BetterPlayerConfiguration betterPlayerConfiguration =
-        BetterPlayerConfiguration(
+    BetterPlayerConfiguration betterPlayerConfiguration = BetterPlayerConfiguration(
       aspectRatio: 16 / 9,
       fit: BoxFit.contain,
       autoPlay: true,
       looping: true,
-      deviceOrientationsAfterFullScreen: [
-        DeviceOrientation.portraitDown,
-        DeviceOrientation.portraitUp
-      ],
+      deviceOrientationsAfterFullScreen: [DeviceOrientation.portraitDown, DeviceOrientation.portraitUp],
     );
-    _betterPlayerDataSource = BetterPlayerDataSource(
-      BetterPlayerDataSourceType.network,
-      Constants.forBiggerBlazesUrl,
-    );
+    _betterPlayerDataSource = BetterPlayerDataSource(BetterPlayerDataSourceType.network,
+        'http://192.168.0.117:1337/v1/storage/files/69766a73-7f20-477c-ab11-e34130e98d09'
+        //Constants.forBiggerBlazesUrl,
+        );
     _betterPlayerController = BetterPlayerController(betterPlayerConfiguration);
     _betterPlayerController.setupDataSource(_betterPlayerDataSource);
     super.initState();
